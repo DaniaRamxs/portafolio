@@ -26,9 +26,12 @@ const CONTACT_LINKS = [
   },
 ];
 
+// 👉 Reemplaza esto con tu Form ID de formspree.io/new
+const FORMSPREE_ID = 'mkovqbar';
+
 export default function ContactPanel() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
   const leftRef = useFadeIn({ delay: 0 });
   const rightRef = useFadeIn({ delay: 150 });
 
@@ -36,12 +39,29 @@ export default function ContactPanel() {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    // Conectar con backend, EmailJS, Formspree, etc.
-    setSent(true);
-    setForm({ name: '', email: '', message: '' });
-    setTimeout(() => setSent(false), 4000);
+    setStatus('sending');
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setStatus('sent');
+        setForm({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 4000);
+      }
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   return (
@@ -114,7 +134,7 @@ export default function ContactPanel() {
             />
           </div>
           <div className="form-submit">
-            {sent ? (
+            {status === 'sent' ? (
               <span style={{
                 fontFamily: 'JetBrains Mono, monospace',
                 fontSize: '0.82rem',
@@ -122,9 +142,17 @@ export default function ContactPanel() {
               }}>
                 ✓ Mensaje enviado correctamente
               </span>
+            ) : status === 'error' ? (
+              <span style={{
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.82rem',
+                color: '#ff5566',
+              }}>
+                ✗ Error al enviar. Intenta de nuevo.
+              </span>
             ) : (
-              <button type="submit" className="btn-primary">
-                Enviar mensaje
+              <button type="submit" className="btn-primary" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
                 </svg>
