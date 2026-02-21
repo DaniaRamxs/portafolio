@@ -14,15 +14,6 @@ const EXPERIENCE = [
   },
   {
     type: 'work',
-    role: 'Full Stack Developer Jr.',
-    company: 'Agencia Digital · Híbrido',
-    period: '2022 — 2023',
-    description:
-      'Construcción de aplicaciones web end-to-end para clientes de e-commerce y educación. Integración con APIs de pago (Stripe, MercadoPago) y sistemas de autenticación OAuth.',
-    tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe'],
-  },
-  {
-    type: 'work',
     role: 'Desarrolladora Web Freelance',
     company: 'Independiente',
     period: '2021 — 2022',

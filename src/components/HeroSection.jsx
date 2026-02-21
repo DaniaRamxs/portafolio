@@ -99,15 +99,15 @@ export default function HeroSection({ onNavigate }) {
       <div className="hero__stats">
         <div>
           <div className="hero__stat-value">3+</div>
-          <div className="hero__stat-label">Años de experiencia</div>
+          <div className="hero__stat-label">Años creando código</div>
         </div>
         <div>
-          <div className="hero__stat-value">20+</div>
-          <div className="hero__stat-label">Proyectos completados</div>
+          <div className="hero__stat-value">React</div>
+          <div className="hero__stat-label">Stack principal</div>
         </div>
         <div>
-          <div className="hero__stat-value">10+</div>
-          <div className="hero__stat-label">Tecnologías dominadas</div>
+          <div className="hero__stat-value">JS · TS</div>
+          <div className="hero__stat-label">Lenguajes base</div>
         </div>
       </div>
     </div>

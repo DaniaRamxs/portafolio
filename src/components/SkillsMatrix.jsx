@@ -7,40 +7,43 @@ const SKILL_GROUPS = [
     icon: '⚛',
     title: 'Frontend',
     skills: [
-      { name: 'React / Next.js',  level: 94 },
-      { name: 'TypeScript',       level: 88 },
-      { name: 'CSS / Tailwind',   level: 90 },
-      { name: 'Vite / Webpack',   level: 80 },
+      { name: 'React / Next.js',  level: 90 },
+      { name: 'JavaScript',       level: 88 },
+      { name: 'TypeScript',       level: 75 },
+      { name: 'Tailwind CSS',     level: 88 },
+      { name: 'HTML / CSS',       level: 92 },
     ],
   },
   {
     icon: '⚙',
-    title: 'Backend',
+    title: 'Backend & DB',
     skills: [
-      { name: 'Node.js',          level: 86 },
-      { name: 'Python / FastAPI', level: 78 },
-      { name: 'PostgreSQL',       level: 82 },
-      { name: 'Redis / Caché',    level: 70 },
+      { name: 'Node.js',          level: 72 },
+      { name: 'Supabase',         level: 80 },
+      { name: 'PostgreSQL',       level: 68 },
+      { name: 'REST APIs',        level: 82 },
     ],
   },
   {
     icon: '☁',
-    title: 'DevOps / Cloud',
+    title: 'Herramientas',
     skills: [
-      { name: 'Docker',           level: 78 },
-      { name: 'GitHub Actions',   level: 82 },
-      { name: 'Vercel / Netlify', level: 88 },
-      { name: 'Supabase / BaaS',  level: 76 },
+      { name: 'Git / GitHub',     level: 88 },
+      { name: 'Vite',             level: 85 },
+      { name: 'Vercel',           level: 86 },
+      { name: 'Figma',            level: 74 },
     ],
   },
   {
-    icon: '◈',
-    title: 'Diseño & IA',
+    icon: '◎',
+    title: 'Habilidades Blandas',
+    soft: true,
     skills: [
-      { name: 'Figma / UX',       level: 84 },
-      { name: 'LangChain',        level: 72 },
-      { name: 'OpenAI API',       level: 78 },
-      { name: 'Accesibilidad',    level: 80 },
+      { name: 'Comunicación',     level: 90 },
+      { name: 'Trabajo en equipo',level: 88 },
+      { name: 'Resolución de problemas', level: 85 },
+      { name: 'Adaptabilidad',    level: 87 },
+      { name: 'Autonomía',        level: 90 },
     ],
   },
 ];
@@ -60,7 +63,12 @@ function SkillGroup({ group, visible, index }) {
           <div className="skill-item__bar">
             <div
               className="skill-item__fill"
-              style={{ width: visible ? `${skill.level}%` : '0%' }}
+              style={{
+                width: visible ? `${skill.level}%` : '0%',
+                background: group.soft
+                  ? 'linear-gradient(90deg, #aa88ff, #00ccff)'
+                  : 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))',
+              }}
             />
           </div>
           <span className="skill-item__level">{skill.level}%</span>
@@ -88,7 +96,7 @@ export default function SkillsMatrix() {
     <div className="shell__section" ref={containerRef}>
       <div ref={headerRef} className="fade-in">
         <p className="section-label">// skills</p>
-        <h2 className="section-title">Stack tecnológico</h2>
+        <h2 className="section-title">Habilidades</h2>
         <div className="section-divider" />
       </div>
 
