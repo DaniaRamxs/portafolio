@@ -26,12 +26,13 @@ const SKILL_GROUPS = [
   },
   {
     icon: '☁',
-    title: 'Herramientas',
+    title: 'Herramientas & IA',
     skills: [
       { name: 'Git / GitHub',     level: 88 },
       { name: 'Vite',             level: 85 },
       { name: 'Vercel',           level: 86 },
       { name: 'Figma',            level: 74 },
+      { name: 'MCP (Model Context Protocol)', level: 78 },
     ],
   },
   {
