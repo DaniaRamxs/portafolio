@@ -23,12 +23,12 @@ const EXPERIENCE = [
   },
   {
     type: 'edu',
-    role: 'Ingeniería en Sistemas de Información',
-    company: 'Universidad · Presencial',
-    period: '2018 — 2022',
+    role: 'Ingeniería de Sistemas',
+    company: 'En formación',
+    period: '2020 — Presente',
     description:
-      'Formación en algoritmos, estructuras de datos, bases de datos relacionales y desarrollo de software. Proyecto final: plataforma de gestión académica con React + Django.',
-    tech: ['Python', 'Java', 'SQL', 'React'],
+      'Carrera en curso enfocada en desarrollo de software, estructuras de datos, bases de datos y arquitectura de sistemas.',
+    tech: ['Python', 'Java', 'SQL', 'Algoritmos'],
   },
 ];
 
