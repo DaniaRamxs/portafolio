@@ -14,6 +14,7 @@ const SKILL_GROUPS = {
         { name: 'TypeScript',       level: 75 },
         { name: 'Tailwind CSS',     level: 88 },
         { name: 'HTML / CSS',       level: 92 },
+        { name: 'Chart.js',         level: 76 },
       ],
     },
     {
@@ -36,6 +37,7 @@ const SKILL_GROUPS = {
         { name: 'Vite',             level: 85 },
         { name: 'Vercel',           level: 86 },
         { name: 'Figma',            level: 74 },
+        { name: 'MediaPipe',        level: 74 },
         { name: 'Playwright',       level: 72 },
         { name: 'MCP (Model Context Protocol)', level: 78 },
       ],
@@ -63,6 +65,7 @@ const SKILL_GROUPS = {
         { name: 'TypeScript',       level: 75 },
         { name: 'Tailwind CSS',     level: 88 },
         { name: 'HTML / CSS',       level: 92 },
+        { name: 'Chart.js',         level: 76 },
       ],
     },
     {
@@ -85,6 +88,7 @@ const SKILL_GROUPS = {
         { name: 'Vite',             level: 85 },
         { name: 'Vercel',           level: 86 },
         { name: 'Figma',            level: 74 },
+        { name: 'MediaPipe',        level: 74 },
         { name: 'Playwright',       level: 72 },
         { name: 'MCP (Model Context Protocol)', level: 78 },
       ],
