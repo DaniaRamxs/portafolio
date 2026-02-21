@@ -9,7 +9,7 @@ import './components.css';
 
 const SECTIONS = ['hero', 'experience', 'projects', 'skills', 'contact'];
 
-export default function Shell({ onViewChange, theme, onToggleTheme }) {
+export default function Shell({ onViewChange, theme, onToggleTheme, onToggleLang, lang }) {
   const [activeSection, setActiveSection] = useState('hero');
   const contentRef = useRef(null);
   const sectionRefs = useRef({});
@@ -55,6 +55,8 @@ export default function Shell({ onViewChange, theme, onToggleTheme }) {
         onArchitectureView={() => onViewChange?.('architecture')}
         theme={theme}
         onToggleTheme={onToggleTheme}
+        onToggleLang={onToggleLang}
+        lang={lang}
       />
 
       <div className="shell__content" ref={contentRef}>

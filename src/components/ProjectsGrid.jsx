@@ -1,29 +1,59 @@
 import React from 'react';
 import { useFadeIn } from './useFadeIn';
+import { useLang } from './LangContext';
 import './components.css';
 
-const PROJECTS = [
-  {
-    id: 1,
-    type: 'Blog · Portfolio Personal',
-    title: 'Space Dan',
-    description:
-      'Espacio personal con blog, tablón de avisos, galería, música, juegos y más. Usa lazy loading con React Suspense para carga optimizada y Supabase como backend para persistencia de datos.',
-    stack: ['React 19', 'React Router', 'Supabase', 'Tailwind CSS', 'Vite'],
-    demo: 'https://space-dan.vercel.app/',
-    repo: 'https://github.com/DaniaRamxs/space-dan',
-  },
-  {
-    id: 2,
-    type: 'Landing Page · Campaña Política',
-    title: 'Marlene Luyo — Candidata 2026',
-    description:
-      'Landing page para campaña electoral de candidata a diputada por Lima Provincias. Incluye mapa interactivo de las 9 provincias, plataforma política, instrucciones de voto, sección de preguntas frecuentes y cuenta regresiva a las elecciones 2026.',
-    stack: ['Vite', 'Tailwind CSS', 'JavaScript', 'Vercel'],
-    demo: 'https://landingpage-politica.vercel.app/',
-    repo: 'https://github.com/DaniaRamxs/landingpage-politica',
-  },
-];
+const PROJECTS = {
+  es: [
+    {
+      id: 1,
+      type: 'Blog · Portfolio Personal',
+      title: 'Space Dan',
+      description:
+        'Espacio personal con blog, tablón de avisos, galería, música, juegos y más. Usa lazy loading con React Suspense para carga optimizada y Supabase como backend. Suite de tests automatizados con Python (Playwright).',
+      stack: ['React 19', 'React Router', 'Supabase', 'Tailwind CSS', 'Vite', 'Python'],
+      demo: 'https://space-dan.vercel.app/',
+      repo: 'https://github.com/DaniaRamxs/space-dan',
+    },
+    {
+      id: 2,
+      type: 'Landing Page · Campaña Política',
+      title: 'Marlene Luyo — Candidata 2026',
+      description:
+        'Landing page para campaña electoral de candidata a diputada por Lima Provincias. Incluye mapa interactivo de las 9 provincias, plataforma política, instrucciones de voto, preguntas frecuentes y cuenta regresiva a elecciones 2026.',
+      stack: ['Vite', 'Tailwind CSS', 'JavaScript', 'Vercel'],
+      demo: 'https://landingpage-politica.vercel.app/',
+      repo: 'https://github.com/DaniaRamxs/landingpage-politica',
+    },
+  ],
+  en: [
+    {
+      id: 1,
+      type: 'Blog · Personal Portfolio',
+      title: 'Space Dan',
+      description:
+        'Personal space with blog, bulletin board, gallery, music, games and more. Uses lazy loading with React Suspense for optimized loading and Supabase as backend. Automated test suite with Python (Playwright) covering 8 critical user flows.',
+      stack: ['React 19', 'React Router', 'Supabase', 'Tailwind CSS', 'Vite', 'Python'],
+      demo: 'https://space-dan.vercel.app/',
+      repo: 'https://github.com/DaniaRamxs/space-dan',
+    },
+    {
+      id: 2,
+      type: 'Landing Page · Political Campaign',
+      title: 'Marlene Luyo — Candidate 2026',
+      description:
+        'Electoral campaign landing page for a congressional candidate in Lima Provincias. Features an interactive map of 9 provinces, political platform, voting instructions, FAQ section, and countdown to the 2026 elections.',
+      stack: ['Vite', 'Tailwind CSS', 'JavaScript', 'Vercel'],
+      demo: 'https://landingpage-politica.vercel.app/',
+      repo: 'https://github.com/DaniaRamxs/landingpage-politica',
+    },
+  ],
+};
+
+const LABELS = {
+  es: { label: '// proyectos', title: 'Lo que he construido', code: 'Código' },
+  en: { label: '// projects',  title: "What I've built",      code: 'Code' },
+};
 
 const ExternalIcon = () => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -37,7 +67,7 @@ const GithubIcon = () => (
   </svg>
 );
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, codeLabel }) {
   const ref = useFadeIn({ delay: index * 80 });
 
   return (
@@ -53,7 +83,7 @@ function ProjectCard({ project, index }) {
       <div className="project-card__links">
         {project.repo && (
           <a href={project.repo} target="_blank" rel="noreferrer" className="project-card__link">
-            <GithubIcon /> Código
+            <GithubIcon /> {codeLabel}
           </a>
         )}
         {project.demo && (
@@ -67,19 +97,22 @@ function ProjectCard({ project, index }) {
 }
 
 export default function ProjectsGrid() {
+  const lang = useLang();
   const headerRef = useFadeIn();
+  const projects = PROJECTS[lang];
+  const { label, title, code } = LABELS[lang];
 
   return (
     <div className="shell__section">
       <div ref={headerRef} className="fade-in">
-        <p className="section-label">// proyectos</p>
-        <h2 className="section-title">Lo que he construido</h2>
+        <p className="section-label">{label}</p>
+        <h2 className="section-title">{title}</h2>
         <div className="section-divider" />
       </div>
 
       <div className="projects-grid">
-        {PROJECTS.map((project, i) => (
-          <ProjectCard key={project.id} project={project} index={i} />
+        {projects.map((project, i) => (
+          <ProjectCard key={project.id} project={project} index={i} codeLabel={code} />
         ))}
       </div>
     </div>

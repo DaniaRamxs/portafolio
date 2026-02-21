@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useFadeIn } from './useFadeIn';
+import { useLang } from './LangContext';
 import './components.css';
 
 const CONTACT_LINKS = [
@@ -26,10 +27,46 @@ const CONTACT_LINKS = [
   },
 ];
 
-// 👉 Reemplaza esto con tu Form ID de formspree.io/new
 const FORMSPREE_ID = 'mkovqbar';
 
+const CONTENT = {
+  es: {
+    label: '// contacto',
+    title: 'Hablemos',
+    tagline: 'Estoy abierta a oportunidades freelance, proyectos colaborativos y posiciones full-time. Si tienes una idea o propuesta, me encantaría escucharte.',
+    fieldName: 'Nombre',
+    fieldEmail: 'Email',
+    fieldMessage: 'Mensaje',
+    placeholderName: 'Tu nombre',
+    placeholderEmail: 'tu@email.com',
+    placeholderMessage: 'Cuéntame sobre tu proyecto...',
+    btnSend: 'Enviar mensaje',
+    btnSending: 'Enviando...',
+    msgSent: '✓ Mensaje enviado correctamente',
+    msgError: '✗ Error al enviar. Intenta de nuevo.',
+    footer: 'Hecho con React + Vite',
+  },
+  en: {
+    label: '// contact',
+    title: "Let's Talk",
+    tagline: "I'm open to freelance opportunities, collaborative projects, and full-time positions. If you have an idea or proposal, I'd love to hear from you.",
+    fieldName: 'Name',
+    fieldEmail: 'Email',
+    fieldMessage: 'Message',
+    placeholderName: 'Your name',
+    placeholderEmail: 'you@email.com',
+    placeholderMessage: 'Tell me about your project...',
+    btnSend: 'Send message',
+    btnSending: 'Sending...',
+    msgSent: '✓ Message sent successfully',
+    msgError: '✗ Error sending. Please try again.',
+    footer: 'Built with React + Vite',
+  },
+};
+
 export default function ContactPanel() {
+  const lang = useLang();
+  const c = CONTENT[lang];
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
   const leftRef = useFadeIn({ delay: 0 });
@@ -66,16 +103,13 @@ export default function ContactPanel() {
 
   return (
     <div className="shell__section">
-      <p className="section-label">// contacto</p>
-      <h2 className="section-title">Hablemos</h2>
+      <p className="section-label">{c.label}</p>
+      <h2 className="section-title">{c.title}</h2>
       <div className="section-divider" />
 
       <div className="contact-layout">
         <div className="contact-info fade-in" ref={leftRef}>
-          <p className="contact-info__tagline">
-            Estoy abierta a oportunidades freelance, proyectos colaborativos y posiciones
-            full-time. Si tienes una idea o propuesta, me encantaría escucharte.
-          </p>
+          <p className="contact-info__tagline">{c.tagline}</p>
 
           <div className="contact-links">
             {CONTACT_LINKS.map(link => (
@@ -98,36 +132,36 @@ export default function ContactPanel() {
 
         <form className="contact-form fade-in" ref={rightRef} onSubmit={handleSubmit}>
           <div className="form-field">
-            <label htmlFor="name">Nombre</label>
+            <label htmlFor="name">{c.fieldName}</label>
             <input
               id="name"
               name="name"
               type="text"
-              placeholder="Tu nombre"
+              placeholder={c.placeholderName}
               value={form.name}
               onChange={handleChange}
               required
             />
           </div>
           <div className="form-field">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{c.fieldEmail}</label>
             <input
               id="email"
               name="email"
               type="email"
-              placeholder="tu@email.com"
+              placeholder={c.placeholderEmail}
               value={form.email}
               onChange={handleChange}
               required
             />
           </div>
           <div className="form-field">
-            <label htmlFor="message">Mensaje</label>
+            <label htmlFor="message">{c.fieldMessage}</label>
             <textarea
               id="message"
               name="message"
               rows={5}
-              placeholder="Cuéntame sobre tu proyecto..."
+              placeholder={c.placeholderMessage}
               value={form.message}
               onChange={handleChange}
               required
@@ -135,24 +169,16 @@ export default function ContactPanel() {
           </div>
           <div className="form-submit">
             {status === 'sent' ? (
-              <span style={{
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: '0.82rem',
-                color: 'var(--accent-primary)',
-              }}>
-                ✓ Mensaje enviado correctamente
+              <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem', color: 'var(--accent-primary)' }}>
+                {c.msgSent}
               </span>
             ) : status === 'error' ? (
-              <span style={{
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: '0.82rem',
-                color: '#ff5566',
-              }}>
-                ✗ Error al enviar. Intenta de nuevo.
+              <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem', color: '#ff5566' }}>
+                {c.msgError}
               </span>
             ) : (
               <button type="submit" className="btn-primary" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
+                {status === 'sending' ? c.btnSending : c.btnSend}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
                 </svg>
@@ -174,7 +200,7 @@ export default function ContactPanel() {
         gap: 12,
       }}>
         <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
-          © {new Date().getFullYear()} Dania Ramos — Hecho con React + Vite
+          © {new Date().getFullYear()} Dania Ramos — {c.footer}
         </span>
         <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--text-technical)', opacity: 0.6 }}>
           system.status: online ●

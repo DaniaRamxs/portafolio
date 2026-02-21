@@ -1,21 +1,68 @@
 import React, { useState, useEffect } from 'react';
+import { useLang } from './LangContext';
 import './components.css';
 
-const TYPED_TITLES = [
-  'Full Stack Developer',
-  'Arquitecto de Software',
-  'AI/ML Enthusiast',
-  'Builder de Sistemas',
-];
+const TYPED_TITLES = {
+  es: [
+    'Frontend Developer',
+    'Arquitecta de Software',
+    'React Specialist',
+    'Builder de Sistemas',
+  ],
+  en: [
+    'Frontend Developer',
+    'Software Architect',
+    'React Specialist',
+    'Systems Builder',
+  ],
+};
+
+const CONTENT = {
+  es: {
+    tag: 'Disponible para proyectos',
+    greeting: 'Hola, soy',
+    bio: 'Construyo aplicaciones web de alto rendimiento con foco en experiencia de usuario, arquitecturas escalables y sistemas inteligentes. Apasionada por el código limpio y las soluciones que hacen la diferencia.',
+    btnProjects: 'Ver proyectos',
+    btnCV: 'Descargar CV',
+    stats: [
+      { value: '3+',     label: 'Años creando código' },
+      { value: 'React',  label: 'Stack principal' },
+      { value: 'JS · TS', label: 'Lenguajes base' },
+    ],
+  },
+  en: {
+    tag: 'Available for projects',
+    greeting: "Hi, I'm",
+    bio: 'I build high-performance web applications focused on user experience, scalable architectures, and intelligent systems. Passionate about clean code and solutions that make a difference.',
+    btnProjects: 'View projects',
+    btnCV: 'Download CV',
+    stats: [
+      { value: '3+',     label: 'Years writing code' },
+      { value: 'React',  label: 'Main stack' },
+      { value: 'JS · TS', label: 'Base languages' },
+    ],
+  },
+};
 
 export default function HeroSection({ onNavigate }) {
+  const lang = useLang();
   const [displayedTitle, setDisplayedTitle] = useState('');
   const [titleIndex, setTitleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const titles = TYPED_TITLES[lang];
+  const c = CONTENT[lang];
+
   useEffect(() => {
-    const currentTitle = TYPED_TITLES[titleIndex];
+    setDisplayedTitle('');
+    setTitleIndex(0);
+    setCharIndex(0);
+    setIsDeleting(false);
+  }, [lang]);
+
+  useEffect(() => {
+    const currentTitle = titles[titleIndex];
     const delay = isDeleting ? 40 : 80;
 
     const timer = setTimeout(() => {
@@ -29,22 +76,22 @@ export default function HeroSection({ onNavigate }) {
         setCharIndex(c => c - 1);
       } else {
         setIsDeleting(false);
-        setTitleIndex(i => (i + 1) % TYPED_TITLES.length);
+        setTitleIndex(i => (i + 1) % titles.length);
       }
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, titleIndex]);
+  }, [charIndex, isDeleting, titleIndex, titles]);
 
   return (
     <div className="hero shell__section" style={{ paddingTop: '40px' }}>
       <div className="hero__tag">
         <span className="hero__tag-dot" />
-        Disponible para proyectos
+        {c.tag}
       </div>
 
       <h1 className="hero__name">
-        Hola, soy{' '}
+        {c.greeting}{' '}
         <span className="hero__name-accent">Dania Ramos</span>
       </h1>
 
@@ -53,21 +100,17 @@ export default function HeroSection({ onNavigate }) {
         <span className="hero__title-cursor" />
       </p>
 
-      <p className="hero__bio">
-        Construyo aplicaciones web de alto rendimiento con foco en experiencia de usuario,
-        arquitecturas escalables y sistemas inteligentes. Apasionada por el código limpio
-        y las soluciones que hacen la diferencia.
-      </p>
+      <p className="hero__bio">{c.bio}</p>
 
       <div className="hero__actions">
         <button className="btn-primary" onClick={() => onNavigate('projects')}>
-          Ver proyectos
+          {c.btnProjects}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
         <a className="btn-outline" href="/cv.pdf" download>
-          Descargar CV
+          {c.btnCV}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
           </svg>
@@ -97,18 +140,12 @@ export default function HeroSection({ onNavigate }) {
       </div>
 
       <div className="hero__stats">
-        <div>
-          <div className="hero__stat-value">3+</div>
-          <div className="hero__stat-label">Años creando código</div>
-        </div>
-        <div>
-          <div className="hero__stat-value">React</div>
-          <div className="hero__stat-label">Stack principal</div>
-        </div>
-        <div>
-          <div className="hero__stat-value">JS · TS</div>
-          <div className="hero__stat-label">Lenguajes base</div>
-        </div>
+        {c.stats.map(s => (
+          <div key={s.label}>
+            <div className="hero__stat-value">{s.value}</div>
+            <div className="hero__stat-label">{s.label}</div>
+          </div>
+        ))}
       </div>
     </div>
   );

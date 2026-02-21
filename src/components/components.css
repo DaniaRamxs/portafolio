@@ -776,6 +776,32 @@
   color: var(--accent-secondary);
 }
 
+/* ── Lang Toggle Button ──────────────────── */
+.topbar__lang-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  background: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0;
+}
+
+.topbar__lang-btn:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  background: var(--accent-soft);
+}
+
 /* ── Theme Toggle Button ─────────────────── */
 .topbar__theme-btn {
   display: flex;

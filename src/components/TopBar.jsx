@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './components.css';
 
-const NAV_ITEMS = [
-  { id: 'hero',       label: 'Inicio' },
-  { id: 'experience', label: 'Experiencia' },
-  { id: 'projects',   label: 'Proyectos' },
-  { id: 'skills',     label: 'Skills' },
-  { id: 'contact',    label: 'Contacto' },
-];
+const NAV_ITEMS = {
+  es: [
+    { id: 'hero',       label: 'Inicio' },
+    { id: 'experience', label: 'Experiencia' },
+    { id: 'projects',   label: 'Proyectos' },
+    { id: 'skills',     label: 'Skills' },
+    { id: 'contact',    label: 'Contacto' },
+  ],
+  en: [
+    { id: 'hero',       label: 'Home' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects',   label: 'Projects' },
+    { id: 'skills',     label: 'Skills' },
+    { id: 'contact',    label: 'Contact' },
+  ],
+};
 
 const SunIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -29,7 +38,7 @@ const MoonIcon = () => (
   </svg>
 );
 
-export default function TopBar({ activeSection, onNavigate, onArchitectureView, theme, onToggleTheme }) {
+export default function TopBar({ activeSection, onNavigate, onArchitectureView, theme, onToggleTheme, onToggleLang, lang }) {
   const [time, setTime] = useState('');
 
   useEffect(() => {
@@ -42,18 +51,17 @@ export default function TopBar({ activeSection, onNavigate, onArchitectureView, 
     return () => clearInterval(id);
   }, []);
 
+  const navItems = NAV_ITEMS[lang] || NAV_ITEMS.es;
+
   return (
     <nav className="topbar">
-      <button
-        className="topbar__brand"
-        onClick={() => onNavigate('hero')}
-      >
+      <button className="topbar__brand" onClick={() => onNavigate('hero')}>
         <span className="topbar__brand-dot" />
         DaniaRamxs
       </button>
 
       <div className="topbar__nav">
-        {NAV_ITEMS.map(item => (
+        {navItems.map(item => (
           <button
             key={item.id}
             className={`topbar__nav-btn${activeSection === item.id ? ' topbar__nav-btn--active' : ''}`}
@@ -67,6 +75,14 @@ export default function TopBar({ activeSection, onNavigate, onArchitectureView, 
       <div className="topbar__actions">
         <button className="topbar__arch-btn" onClick={onArchitectureView} title="Ver arquitectura">
           &lt;/arch&gt;
+        </button>
+
+        <button
+          className="topbar__lang-btn"
+          onClick={onToggleLang}
+          title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+        >
+          {lang === 'es' ? 'EN' : 'ES'}
         </button>
 
         <button

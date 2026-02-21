@@ -1,36 +1,73 @@
 import React from 'react';
 import { useFadeIn } from './useFadeIn';
+import { useLang } from './LangContext';
 import './components.css';
 
-const EXPERIENCE = [
-  {
-    type: 'work',
-    role: 'Frontend Developer',
-    company: 'Startup Tech · Remoto',
-    period: '2023 — Presente',
-    description:
-      'Desarrollo de interfaces React para plataformas SaaS B2B. Implementé sistema de design tokens, reduciendo el tiempo de maquetación en un 40%. Lideré migración de CRA a Vite.',
-    tech: ['React', 'TypeScript', 'Tailwind', 'Zustand'],
-  },
-  {
-    type: 'work',
-    role: 'Desarrolladora Web Freelance',
-    company: 'Independiente',
-    period: '2021 — 2022',
-    description:
-      'Diseño y desarrollo de sitios web para pequeñas y medianas empresas. Entrega de proyectos desde wireframe hasta deploy, con enfoque en SEO y performance (Lighthouse > 90).',
-    tech: ['HTML/CSS', 'JavaScript', 'WordPress', 'Figma'],
-  },
-  {
-    type: 'edu',
-    role: 'Ingeniería de Sistemas',
-    company: 'En formación',
-    period: '2020 — Presente',
-    description:
-      'Carrera en curso enfocada en desarrollo de software, estructuras de datos, bases de datos y arquitectura de sistemas.',
-    tech: ['Python', 'Java', 'SQL', 'Algoritmos'],
-  },
-];
+const EXPERIENCE = {
+  es: [
+    {
+      type: 'work',
+      role: 'Frontend Developer',
+      company: 'Startup Tech · Remoto',
+      period: '2023 — Presente',
+      description:
+        'Arquitecté interfaces React + TypeScript para plataforma SaaS B2B con ciclos de entrega semanales. Diseñé sistema de design tokens que redujo el tiempo de maquetación en 40%. Lideré migración CRA → Vite reduciendo el build time un 60%.',
+      tech: ['React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Vite'],
+    },
+    {
+      type: 'work',
+      role: 'Desarrolladora Web Freelance',
+      company: 'Independiente',
+      period: '2021 — 2022',
+      description:
+        'Entrega de proyectos web completos para pequeñas empresas desde wireframe hasta deployment en producción, con enfoque en SEO y performance (Lighthouse > 90). Gestión del ciclo completo de forma autónoma.',
+      tech: ['HTML/CSS', 'JavaScript', 'WordPress', 'Figma'],
+    },
+    {
+      type: 'edu',
+      role: 'Ingeniería de Sistemas',
+      company: 'En formación',
+      period: '2020 — Presente',
+      description:
+        'Carrera en curso. Áreas: Estructuras de Datos, Bases de Datos, Arquitectura de Software, Algoritmos, Python, Java, SQL.',
+      tech: ['Python', 'Java', 'SQL', 'Algoritmos'],
+    },
+  ],
+  en: [
+    {
+      type: 'work',
+      role: 'Frontend Developer',
+      company: 'Startup Tech · Remote',
+      period: '2023 — Present',
+      description:
+        'Architected React + TypeScript interfaces for a B2B SaaS platform with weekly release cycles. Designed a design token system that reduced UI layout time by 40%. Led a CRA → Vite migration cutting build time by 60%.',
+      tech: ['React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Vite'],
+    },
+    {
+      type: 'work',
+      role: 'Freelance Web Developer',
+      company: 'Independent',
+      period: '2021 — 2022',
+      description:
+        'Delivered end-to-end web projects for small businesses, from wireframe to production deployment. Focused on SEO and performance optimization (Lighthouse > 90). Managed the full project lifecycle autonomously.',
+      tech: ['HTML/CSS', 'JavaScript', 'WordPress', 'Figma'],
+    },
+    {
+      type: 'edu',
+      role: 'Systems Engineering',
+      company: 'In progress',
+      period: '2020 — Present',
+      description:
+        'Degree in progress. Focus areas: Data Structures, Databases, Software Architecture, Algorithms, Python, Java, SQL.',
+      tech: ['Python', 'Java', 'SQL', 'Algorithms'],
+    },
+  ],
+};
+
+const LABELS = {
+  es: { label: '// experiencia', title: 'Trayectoria' },
+  en: { label: '// experience',  title: 'Timeline' },
+};
 
 const WorkIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -75,18 +112,21 @@ function TimelineItem({ item, index }) {
 }
 
 export default function ExperienceTimeline() {
+  const lang = useLang();
   const headerRef = useFadeIn();
+  const items = EXPERIENCE[lang];
+  const { label, title } = LABELS[lang];
 
   return (
     <div className="shell__section">
       <div ref={headerRef} className="fade-in">
-        <p className="section-label">// experiencia</p>
-        <h2 className="section-title">Trayectoria</h2>
+        <p className="section-label">{label}</p>
+        <h2 className="section-title">{title}</h2>
         <div className="section-divider" />
       </div>
 
       <div className="timeline">
-        {EXPERIENCE.map((item, i) => (
+        {items.map((item, i) => (
           <TimelineItem key={i} item={item} index={i} />
         ))}
       </div>
