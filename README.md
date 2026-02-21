@@ -1,8 +1,37 @@
-# React + Vite
+# Portafolio — Dania Ramos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portafolio personal desarrollado con React 18 + Vite. Diseño dark/light con estética técnica, animaciones al scroll y navegación por secciones.
 
-Currently, two official plugins are available:
+## Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [daniaramxs.vercel.app](https://daniaramxs.vercel.app) *(próximamente)*
+
+## Secciones
+
+- **Hero** — Presentación con efecto typewriter y links sociales
+- **Experiencia** — Timeline vertical de trayectoria profesional
+- **Proyectos** — Proyectos reales con links a demo y código
+- **Skills** — Stack tecnológico con barras animadas
+- **Contacto** — Formulario + links directos
+
+## Stack
+
+| Tecnología | Uso |
+|---|---|
+| React 18 | UI con Concurrent Mode y Suspense |
+| Vite 6 | Bundler y dev server |
+| CSS Variables | Sistema de temas dark/light |
+| IntersectionObserver | Animaciones fade-in al scroll |
+
+## Ejecutar localmente
+
+```bash
+npm install
+npm run dev
+```
+
+## Contacto
+
+- GitHub: [github.com/DaniaRamxs](https://github.com/DaniaRamxs)
+- LinkedIn: [linkedin.com/in/daniaramxs](https://www.linkedin.com/in/daniaramxs/)
+- Email: dania200200@gmail.com
