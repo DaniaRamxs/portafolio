@@ -18,8 +18,10 @@ const SKILL_GROUPS = [
     icon: '⚙',
     title: 'Backend & DB',
     skills: [
+      { name: 'Python',           level: 75 },
       { name: 'Node.js',          level: 72 },
       { name: 'Supabase',         level: 80 },
+      { name: 'MySQL',            level: 70 },
       { name: 'PostgreSQL',       level: 68 },
       { name: 'REST APIs',        level: 82 },
     ],
