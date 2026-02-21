@@ -8,10 +8,10 @@ const EXPERIENCE = {
     {
       type: 'work',
       role: 'Frontend Developer',
-      company: 'Startup Tech · Remoto',
+      company: 'Proyectos Propios · Remoto',
       period: '2023 — Presente',
       description:
-        'Arquitecté interfaces React + TypeScript para plataforma SaaS B2B con ciclos de entrega semanales. Diseñé sistema de design tokens que redujo el tiempo de maquetación en 40%. Lideré migración CRA → Vite reduciendo el build time un 60%.',
+        'Desarrollo de interfaces React + TypeScript en proyectos personales y colaborativos. Implementé sistema de design tokens reduciendo el tiempo de maquetación en 40%. Migré proyectos de CRA → Vite reduciendo el build time un 60%.',
       tech: ['React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Vite'],
     },
     {
@@ -37,10 +37,10 @@ const EXPERIENCE = {
     {
       type: 'work',
       role: 'Frontend Developer',
-      company: 'Startup Tech · Remote',
+      company: 'Personal & Collaborative Projects · Remote',
       period: '2023 — Present',
       description:
-        'Architected React + TypeScript interfaces for a B2B SaaS platform with weekly release cycles. Designed a design token system that reduced UI layout time by 40%. Led a CRA → Vite migration cutting build time by 60%.',
+        'Built React + TypeScript interfaces across personal and collaborative projects. Implemented a design token system that reduced layout time by 40%. Migrated projects from CRA → Vite, cutting build time by 60%.',
       tech: ['React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Vite'],
     },
     {
