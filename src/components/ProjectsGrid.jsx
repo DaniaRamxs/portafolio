@@ -6,6 +6,16 @@ import './components.css';
 const PROJECTS = {
   es: [
     {
+      id: 3,
+      type: 'App · Visión por Computadora',
+      title: 'FocusGuard Pro',
+      description:
+        'App de monitoreo de concentración y fatiga para estudiantes, basada en el navegador. Usa MediaPipe Face Mesh (478 puntos de seguimiento facial) para detección de somnolencia en tiempo real, análisis de parpadeo y control postural. Todo el procesamiento ocurre localmente, sin servidor.',
+      stack: ['JavaScript', 'MediaPipe', 'Chart.js', 'Vite', 'Web Audio API'],
+      demo: 'https://focus-guard-pro.vercel.app/',
+      repo: 'https://github.com/DaniaRamxs/focus-guard-pro',
+    },
+    {
       id: 1,
       type: 'Blog · Portfolio Personal',
       title: 'Space Dan',
@@ -27,6 +37,16 @@ const PROJECTS = {
     },
   ],
   en: [
+    {
+      id: 3,
+      type: 'App · Computer Vision',
+      title: 'FocusGuard Pro',
+      description:
+        'Browser-based focus and fatigue monitoring app for students. Uses MediaPipe Face Mesh (478-point facial tracking) for real-time drowsiness detection, blink-rate analysis, and posture monitoring. All processing runs locally — no server, no data sent.',
+      stack: ['JavaScript', 'MediaPipe', 'Chart.js', 'Vite', 'Web Audio API'],
+      demo: 'https://focus-guard-pro.vercel.app/',
+      repo: 'https://github.com/DaniaRamxs/focus-guard-pro',
+    },
     {
       id: 1,
       type: 'Blog · Personal Portfolio',
