@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import TopBar from './TopBar';
 import HeroSection from './HeroSection';
 import ExperienceTimeline from './ExperienceTimeline';

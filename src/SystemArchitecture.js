@@ -5,20 +5,25 @@
 
 export const SYSTEM_NODES = {
   CLIENT: {
-    engine: "React 18 (Vite)",
+    engine: "React 19 (Vite)",
     rendering: "Concurrent Mode / Suspense",
-    state: "Zustand / React Context",
-    styling: "Responsive Engine (CSS Variables)"
+    state: "React Context / Hooks",
+    styling: "Tailwind CSS + Framer Motion"
+  },
+  REALTIME: {
+    multiplayer: "Colyseus (Game Server)",
+    transport: "WebSockets / Broadcast Channels",
+    deployment: "Railway (Backend)"
   },
   IA_LAYER: {
     orchestration: "Antigravity Agent",
     context_server: "MCP (Model Context Protocol)",
-    knowledge_db: "Persistent Context Archives"
+    vision: "MediaPipe Face Mesh"
   },
   BACKEND: {
     infra: "PostgreSQL (Supabase/BaaS)",
     security: "RLS (Row Level Security)",
-    realtime: "WebSockets / Broadcast Channels"
+    hosting: "Vercel (Frontend) / Railway (Backend)"
   }
 };
 

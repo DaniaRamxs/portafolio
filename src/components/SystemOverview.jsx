@@ -1,11 +1,11 @@
-import React from 'react';
 import { SYSTEM_NODES, WORKFLOW_MAP } from '../SystemArchitecture';
 import './components.css';
 
 const NODE_META = {
-  CLIENT:   { label: 'CLIENT / UI', color: 'var(--accent-primary)' },
-  IA_LAYER: { label: 'IA LAYER',    color: 'var(--accent-secondary)' },
-  BACKEND:  { label: 'BACKEND',     color: '#aa88ff' },
+  CLIENT: { label: 'CLIENT / UI', color: 'var(--accent-primary)' },
+  REALTIME: { label: 'REAL-TIME', color: '#ff8844' },
+  IA_LAYER: { label: 'IA LAYER', color: 'var(--accent-secondary)' },
+  BACKEND: { label: 'BACKEND', color: '#aa88ff' },
 };
 
 export default function SystemOverview({ onBack }) {
@@ -16,7 +16,7 @@ export default function SystemOverview({ onBack }) {
           ← volver al portfolio
         </button>
 
-        <p className="section-label">// arquitectura</p>
+        <p className="section-label">{'// arquitectura'}</p>
         <h2 className="section-title">Blueprint del Sistema</h2>
         <div className="section-divider" />
 
@@ -48,7 +48,7 @@ export default function SystemOverview({ onBack }) {
         </div>
 
         <div className="workflow-list" style={{ marginTop: 56 }}>
-          <p className="section-label" style={{ marginBottom: 20 }}>// workflow</p>
+          <p className="section-label" style={{ marginBottom: 20 }}>{'// workflow'}</p>
           <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: 24 }}>
             Request Lifecycle
           </h3>
@@ -75,8 +75,8 @@ export default function SystemOverview({ onBack }) {
           lineHeight: 1.8,
         }}>
           <div style={{ color: 'var(--text-dim)', marginBottom: 8 }}># system.info</div>
-          <div>engine    → React 18 + Vite 6</div>
-          <div>deploy    → Netlify / Vercel (static)</div>
+          <div>engine    → React 19 + Vite 7</div>
+          <div>deploy    → Vercel (frontend) / Railway (backend)</div>
           <div>ci/cd     → GitHub Actions</div>
           <div>uptime    → 99.9%</div>
           <div style={{ marginTop: 8, color: 'var(--accent-primary)' }}>status    → ONLINE ●</div>

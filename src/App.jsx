@@ -1,20 +1,16 @@
-import React, { Suspense, lazy, useState, useEffect } from 'react';
+import { Suspense, lazy, useState, useEffect } from 'react';
 import { LangContext } from './components/LangContext';
 
 const Shell = lazy(() => import('./components/Shell'));
 const SystemOverview = lazy(() => import('./components/SystemOverview'));
 
 function App() {
-  const [theme, setTheme] = useState('dark');
-  const [lang, setLang] = useState('es');
+  const [theme, setTheme] = useState(() => localStorage.getItem('portfolio-theme') || 'dark');
+  const [lang, setLang] = useState(() => localStorage.getItem('portfolio-lang') || 'es');
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
-    const savedLang  = localStorage.getItem('portfolio-lang')  || 'es';
-    setTheme(savedTheme);
-    setLang(savedLang);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark';

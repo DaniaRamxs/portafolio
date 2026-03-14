@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLang } from './LangContext';
 import './components.css';
 
 const TYPED_TITLES = {
   es: [
-    'Frontend Developer',
-    'Arquitecta de Software',
-    'React Specialist',
-    'Builder de Sistemas',
+    'Full-Stack Developer',
+    'Ingeniera React',
+    'Sistemas en Tiempo Real',
+    'Instructora de Programación',
   ],
   en: [
-    'Frontend Developer',
-    'Software Architect',
-    'React Specialist',
-    'Systems Builder',
+    'Full-Stack Developer',
+    'React Engineer',
+    'Real-Time Systems',
+    'Programming Instructor',
   ],
 };
 
@@ -21,25 +21,25 @@ const CONTENT = {
   es: {
     tag: 'Disponible para proyectos',
     greeting: 'Hola, soy',
-    bio: 'Construyo aplicaciones web de alto rendimiento con foco en experiencia de usuario, arquitecturas escalables y sistemas inteligentes. Apasionada por el código limpio y las soluciones que hacen la diferencia.',
+    bio: 'Desarrolladora full-stack e instructora de programación. Construyo plataformas sociales en tiempo real, herramientas de IA en el navegador y aplicaciones React en producción. Actualmente desarrollando Spacely (joinspacely.com).',
     btnProjects: 'Ver proyectos',
     btnCV: 'Descargar CV',
     stats: [
-      { value: '3+',     label: 'Años creando código' },
-      { value: 'React',  label: 'Stack principal' },
-      { value: 'JS · TS', label: 'Lenguajes base' },
+      { value: '4+', label: 'Años creando código' },
+      { value: 'React', label: 'Stack principal' },
+      { value: 'Full-Stack', label: 'Perfil' },
     ],
   },
   en: {
     tag: 'Available for projects',
     greeting: "Hi, I'm",
-    bio: 'I build high-performance web applications focused on user experience, scalable architectures, and intelligent systems. Passionate about clean code and solutions that make a difference.',
+    bio: 'Full-stack developer and programming instructor. I build real-time social platforms, browser-based AI tools, and production React applications. Currently architecting Spacely (joinspacely.com).',
     btnProjects: 'View projects',
     btnCV: 'Download CV',
     stats: [
-      { value: '3+',     label: 'Years writing code' },
-      { value: 'React',  label: 'Main stack' },
-      { value: 'JS · TS', label: 'Base languages' },
+      { value: '4+', label: 'Years writing code' },
+      { value: 'React', label: 'Main stack' },
+      { value: 'Full-Stack', label: 'Profile' },
     ],
   },
 };
